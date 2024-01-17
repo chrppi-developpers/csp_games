@@ -15,7 +15,7 @@ async function solve(model_file)
 	const solve = model.solve({options: {solver: 'gecode', 'all-solutions': true}});
 
 	// Print solutions
-	solve.on('solution', solution => {console.log(model_file, ': ', solution.output.json);});
+	solve.on('solution', solution => {console.log(solution.output.raw);});
 	solve.then(result => {console.log(model_file, ': ', result.status);});
 }
 

@@ -100,5 +100,9 @@ constraint exists
 );
 
 function string: format_decimal(var int: x) = "\(x div 10).\(x mod 10)";
-output ["PC \(i): {CPU: \(format_decimal(processor_values[processor_indexes[i]])) MHz, HD: \(hard_disk_values[hard_disk_indexes[i]]) Gb, price: $ \(price_values[price_indexes[i]]), monitor: \(format_decimal(monitor_values[monitor_indexes[i]]))) In}\n" | i in computer_indexes];
+output 
+[
+	"PC: \(i), CPU: \(format_decimal(processor_values[processor_indexes[i]])) MHz, HD: \(hard_disk_values[hard_disk_indexes[i]]) Gb"
+	++ ", price: $ \(price_values[price_indexes[i]]), monitor: \(format_decimal(monitor_values[monitor_indexes[i]])) In\n" | i in computer_indexes
+];
 output ["andrew_computer_index: PC \(andrew_computer_index)\n"];

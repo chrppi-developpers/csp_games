@@ -215,3 +215,10 @@ constraint exists(person_index_1 in people_indexes, person_index_2 in people_ind
 	/\ age_people[person_index_2] = y_35
 	/\ exactly_left_of(person_index_1, person_index_2)
 );
+
+output 
+[
+	"shirt: \(shirt_people[i]), name: \(name_people[i]), surname: \(surname_people[i]), pasta: \(pasta_people[i])"
+	++ ", wine: \(wine_people[i]), age: \(age_people[i])\n" | i in people_indexes
+];
+output ["holly_pasta: PC \(holly_pasta)\n"];

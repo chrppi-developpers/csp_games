@@ -26,14 +26,6 @@ array[releases_indexes] of var releases_indexes: day_indexes;
 array[releases_indexes] of var releases_indexes: time_indexes;
 array[releases_indexes] of var name_values: name_releases;
 
-/*
-% DEBUG
-constraint film_indexes = [4, 2, 3, 1, 5];
-constraint day_indexes = [1, 2, 3, 4, 5];
-constraint time_indexes = [3, 5, 4, 2, 1];
-constraint name_releases = [Mary_Peters, Mark_Thomson, Jessica_Farmer, Sally_Boyden, Laurie_Davison];
-*/
-
 % From this information and the following clues, for each member, can you determine who chose which film, the day on which it was shown, and at what time?
 constraint alldifferent(film_indexes);
 constraint day_indexes = 1..releases;
@@ -111,13 +103,13 @@ constraint exists(release_index_1 in releases_indexes)
 (
 	member(men_names, name_releases[release_index_1])
 	/\ time_values[time_indexes[release_index_1]] < time_8pm
-	/\ release_index_1 != 3
+	/\ day_position_values[day_indexes[release_index_1]] != 3
 );
 constraint exists(release_index_1 in releases_indexes)
 (
 	member(women_names, name_releases[release_index_1])
 	/\ time_values[time_indexes[release_index_1]] < time_8pm
-	/\ release_index_1 != 3
+	/\ day_position_values[day_indexes[release_index_1]] != 3
 );
 
 % 5. Mark, whose choice was Scarecrow, had a showing at a time of one hour and five minutes after that of Scarface.
@@ -149,4 +141,8 @@ constraint exists(release_index_1 in releases_indexes, release_index_2 in releas
 );
 
 function string: format_time(var int: time) = "\(hours(time))h\(minutes(time))";
-output ["\(day_name_values[i]): \(name_releases[i]) for \(film_name_values[film_indexes[i]]) (\(film_date_values[film_indexes[i]])) at \(format_time(time_values[time_indexes[i]]))\n" | i in releases_indexes];
+output 
+[
+	"\(day_name_values[i]): \(name_releases[i]) for \(film_name_values[film_indexes[i]]) (\(film_date_values[film_indexes[i]]))"
+	++ " at \(format_time(time_values[time_indexes[i]]))\n" | i in releases_indexes
+];
