@@ -1,9 +1,0 @@
-# ninja log v5
-0	13	1705436714377008865	index_view.h	bef343bf92f4565d
-0	13	1705436714377008865	index_view.cc	bef343bf92f4565d
-0	13	1705436714377008865	/home/viallard/MEGA/Etudes/Cours/Semestre_1/UE3_-_Optimisation_appliquée/csp_games/app/build/index_view.h	bef343bf92f4565d
-0	13	1705436714377008865	/home/viallard/MEGA/Etudes/Cours/Semestre_1/UE3_-_Optimisation_appliquée/csp_games/app/build/index_view.cc	bef343bf92f4565d
-13	2859	1705436717224999239	CMakeFiles/chrppi.dir/source/main.cpp.o	c75c170af6b369d1
-14	2895	1705436717260999116	CMakeFiles/chrppi.dir/index_view.cc.o	41733fea5c40a1cc
-14	3612	1705436717976996696	CMakeFiles/chrppi.dir/source/controllers/Index.cpp.o	edbefd67932688c8
-3612	3946	1705436718308995574	chrppi	9d6d015794985898

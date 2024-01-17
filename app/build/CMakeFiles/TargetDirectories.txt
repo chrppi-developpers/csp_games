@@ -1,3 +1,0 @@
-/home/viallard/MEGA/Etudes/Cours/Semestre_1/UE3_-_Optimisation_appliquée/csp_games/app/build/CMakeFiles/chrppi.dir
-/home/viallard/MEGA/Etudes/Cours/Semestre_1/UE3_-_Optimisation_appliquée/csp_games/app/build/CMakeFiles/edit_cache.dir
-/home/viallard/MEGA/Etudes/Cours/Semestre_1/UE3_-_Optimisation_appliquée/csp_games/app/build/CMakeFiles/rebuild_cache.dir
