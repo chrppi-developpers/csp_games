@@ -52,7 +52,6 @@ constraint exists(release_index_1 in releases_indexes)
 	/\ minutes(time_values[time_indexes[release_index_1]]) = 30
 	/\ forall(release_index_2 in releases_indexes where release_index_1 != release_index_2 /\ film_date_values[film_indexes[release_index_2]] < 2000)
 	(
-		%day_position_values[day_indexes[release_index_2]] < day_position_values[day_indexes[release_index_1]]
 		film_date_values[film_indexes[release_index_1]] > film_date_values[film_indexes[release_index_2]]
 	)
 );
