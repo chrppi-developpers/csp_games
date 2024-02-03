@@ -1,6 +1,6 @@
 <%c++ // Only view of chrppi %>
 
-<%inc 
+<%inc
 	#include "../source/config.hh"
 %>
 
@@ -9,738 +9,641 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
 		<title>CSP games</title>
-		<link rel="stylesheet" href="css/third-party/bulma/css/bulma.min.css"/>
-		<script defer src="js/third-party/fontawesome.js"></script>
-		<script defer type="module" src="js/minizinc.js"></script>
+
+		<link rel="stylesheet" href="third-party/bulma/css/bulma.min.css" />
+		<link rel="stylesheet" href="third-party/fontawesome/css/fontawesome.css" />
+		<link rel="stylesheet" href="third-party/fontawesome/css/solid.css" />
+		<link rel="stylesheet" href="css/main.css" />
+
+		<script defer type="module" src="js/main.js"></script>
 	</head>
 
 	<body>
 		<div class="tabs is-toggle is-fullwidth">
-  			<ul>
-    			<li  id="{%config::html::tabs_movie_buffs%}">
-    			  <a>
-    			    <span class="icon is-small"><i class="fa-puzzle-piece" aria-hidden="true"></i></span>
-    			    <span>Movie Buffs Associated</span>
-    			  </a>
-    			</li>
-    			<li id="{%config::html::tabs_new_computer%}">
-    			  <a>
-    			    <span class="icon is-small"><i class="fa-puzzle-piece" aria-hidden="true"></i></span>
-    			    <span>A New Personal Computer</span>
-    			  </a>
-    			</li>
-    			<li id="{%config::html::tabs_pasta_wine%}">
-    			  <a>
-    			    <span class="icon is-small"><i class="fa-puzzle-piece" aria-hidden="true"></i></span>
-    			    <span>Pasta and Wine</span>
-    			  </a>
-    			</li>
-				<li id="{%config::html::tabs_creation_puzzle%}">
+			<ul>
+				<li id="{% config::html::puzzle_movie %}">
 					<a>
-					  <span class="icon is-small"><i class="fa-puzzle-piece" aria-hidden="true"></i></span>
-					  <span>Create your own puzzle</span>
+						<span class="icon"><i class="fa-solid fa-film" aria-hidden="true"></i></span>
+						<span>Movie Buffs Associated - Al Pacino</span>
 					</a>
-				  </li>
+				</li>
+				<li id="{% config::html::puzzle_computer %}">
+					<a>
+						<span class="icon"><i class="fa-solid fa-computer" aria-hidden="true"></i></span>
+				    	<span>A New Personal Computer</span>
+					</a>
+				</li>
+				<li id="{% config::html::puzzle_pasta %}">
+					<a>
+						<span class="icon"><i class="fa-solid fa-utensils" aria-hidden="true"></i></span>
+						<span>Pasta and Wine</span>
+					</a>
+				</li>
+				<li id="{% config::html::puzzle_creation %}">
+					<a>
+						<span class="icon"><i class="fa-solid fa-plus" aria-hidden="true"></i></span>
+						<span>Create your own puzzle</span>
+					</a>
+				</li>
   			</ul>
 		</div>
-<!--
-		<table class="table is-bordered">
-			<thead>
-			  	<tr></tr>
-			  	<tr>
-					<th> Film </th>
-					<th> Day </th>
-					<th> Time </th>
-				</tr>
-				<tr>
-					<th>88 Minutes</th>
-				</tr>
-			</thead>
-		</table>
--->
-	
-	<div class="box is-hidden " id="{%config::html::div_movie_buffs%}" >
 		
-		<div class="columns is-mobile is-centered">
-			<div class="column is-half">
-				<div class="block">
-					<h1 class="title">Movie Buffs Associated - Al Pacino</h1><h2 class="subtitle">Logic Puzzle</h2>
-				</div>
-				<div class="block">
-					<p class="is-size-5">
-						A five-member panel, determined by a ballot of members of the local Movie Buffs Associated 
-						at the Annual General Meeting, select a series of movies, starring a particular actor/actress, 
-						to be shown in the Municipal Offices function room each evening from Monday to Friday. 
-						The panel of Sally Boyden, Mark Thomson, Jessica Farmer, Laurie Davison and Mary Peters were 
-						re-elected for 2015.
-					</p>
-				</div>
-		
-				<div class="block">
-					<p class="is-size-5">
-						Last week their choice actor/actress was Al Pacino, and the films chosen 
-						- one per member - were Scarface (1983), Scarecrow (1973), Donnie Brasco (1997), 
-						88 Minutes (2007), and The Recruit (2003). The films chosen were not respective, 
-						and neither were they shown in that order, nor in the order in which they were released. 
-						Showing time differed each evening. From this information and the following clues, 
-						for each member, can you determine who chose which film, the day on which it was shown, and at what time?"
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="box is-hidden" id="{%config::html::id_solution_div_movie%}" >
-			<div class="columns is-mobile is-centered">
-				<div class="column is-half">
-				
-					<div class="notification is-warning" id="{%config::html::id_solution_notification_movie%}">
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="columns is-mobile is-centered">
-			<div class="column is-four-fifths ">
-				<div class="block">
-					<table class="table is-bordered is-hoverable" id="{%config::html::id_table_movie%}" >
-						<thead>
+		<div class="box is-hidden is-size-5" id="{% config::html::div_movie %}">
+			<div class="columns">
+				<div class="column">
+					<div class="columns is-multiline">
+
+						<div class="column is-full content">
+							<h1 class="is-size-5">Wording</h1>
+							<p>
+								A five-member panel, determined by a ballot of members of the local Movie Buffs Associated 
+								at the Annual General Meeting, select a series of movies, starring a particular actor/actress, 
+								to be shown in the Municipal Offices function room each evening from Monday to Friday. 
+								The panel of Sally Boyden, Mark Thomson, Jessica Farmer, Laurie Davison and Mary Peters were 
+								re-elected for 2015.
+							</p>
+							<p>
+								Last week their choice actor/actress was Al Pacino, and the films chosen 
+								- one per member - were Scarface (1983), Scarecrow (1973), Donnie Brasco (1997), 
+								88 Minutes (2007), and The Recruit (2003). The films chosen were not respective, 
+								and neither were they shown in that order, nor in the order in which they were released. 
+								Showing time differed each evening. From this information and the following clues, 
+								for each member, can you determine who chose which film, the day on which it was shown, and at what time?"
+							</p>
+						</div>
 						
-						  	<tr >
-								<th colspan="2" ></th>
-								<th colspan="5" class="is-selected has-text-centered"> Film </th>
-								<th colspan="5" class="is-selected has-text-centered"> Day </th>
-								<th colspan="5" class="is-selected has-text-centered"> Time </th>
-							</tr>
-							<tr >
-								<th colspan="2"></th>
-								<th class="has-text-centered" style="width: 100px;">88 Minutes</th>
-								<th class="has-text-centered" style="width: 100px;">Donnie Brasco</th>
-								<th class="has-text-centered" style="width: 100px;">Scarecrow</th>
-								<th class="has-text-centered" style="width: 100px;">Scarface</th>
-								<th class="has-text-centered" style="width: 100px;">The Recruit</th>
+						<div class="column is-full">
+							<div class="columns">
+								<div class="column is-narrow">
+									<button class="button" id="{% config::html::clear_table_movie %}">Clear Table</button>
+								</div>
+								<div class="column is-narrow horizontal-center">
+									<button class="button is-hidden solve-button" id="{% config::html::solution_movie %}"></button>
+								</div>
+							</div>
+						</div>
+
+						<div class="column is-full">
+							<table class="full-height table is-size-6 is-bordered">
+								<thead>
+									  <tr>
+										<th class="empty-cell">
+										
+										<th>
+											<table class="full-height">
+												<thead>
+													<tr>
+														<th colspan="5" class="is-info has-text-centered">Film</th>
+													</tr>
+													<tr class="full-height">
+														<th class="horizontal-cell vertical-text">88 Minutes</th>
+														<th class="horizontal-cell vertical-text">Donnie Brasco</th>
+														<th class="horizontal-cell vertical-text">Scarecrow</th>
+														<th class="horizontal-cell vertical-text">Scarface</th>
+														<th class="horizontal-cell vertical-text">The Recruit</th>
+													</tr>
+												</thead>
+											</table>
+										</th>
+									
+										<th>
+											<table class="full-height">
+												<thead>
+													<tr>
+														<th colspan="5" class="is-info has-text-centered">Day</th>
+													</tr>
+													<tr class="full-height">
+														<th class="horizontal-cell vertical-text">Monday</th>
+														<th class="horizontal-cell vertical-text">Tuesday</th>
+														<th class="horizontal-cell vertical-text">Wednesday</th>
+														<th class="horizontal-cell vertical-text">Thrusday</th>
+														<th class="horizontal-cell vertical-text">Friday</th>
+													</tr>
+												</thead>
+											</table>
+										</th>
+									
+										<th>
+											<table class="full-height">
+												<thead>
+													<tr>
+														<th colspan="5" class="is-info has-text-centered">Time</th>
+													</tr>
+													<tr class="full-height">
+														<th class="horizontal-cell vertical-text">7:35 pm</th>
+														<th class="horizontal-cell vertical-text">7:40 pm</th>
+														<th class="horizontal-cell vertical-text">8:20 pm</th>
+														<th class="horizontal-cell vertical-text">8:30 pm</th>
+														<th class="horizontal-cell vertical-text">8:45 pm</th>
+													</tr>
+												</thead>
+											</table>
+										</th>
+									</tr>
+								</thead>
 							
-								<th class="has-text-centered" style="width: 100px;">Monday</th>
-								<th class="has-text-centered" style="width: 100px;">Tuesday</th>
-								<th class="has-text-centered" style="width: 100px;">Wednesday</th>
-								<th class="has-text-centered" style="width: 100px;">Thrusday</th>
-								<th class="has-text-centered" style="width: 100px;">Friday</th>
-							
-								<th class="has-text-centered" style="width: 100px;" >7:35 pm</th>
-								<th class="has-text-centered" style="width: 100px;" >7:40 pm</th>
-								<th class="has-text-centered" style="width: 100px;" >8:20 pm</th>
-								<th class="has-text-centered" style="width: 100px;" >8:30 pm</th>
-								<th class="has-text-centered" style="width: 100px;" >8:45 pm</th>
-							
-							</tr>
-						</thead>
-					
-						<tbody>
-							<tr >
-								<th rowspan="5" class="is-selected has-text-centered">Name</th>
-								<th style="height: 100px;" >Jessica</th>
-								<td ></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr >
-								<th style="height: 100px;">Laurie</th>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr >
-								<th style="height: 100px;">Mark</th>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr >
-								<th style="height: 100px;">Mary</th>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr >
-								<th style="height: 100px;">Sally</th>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-						</tbody>
-					</table>
+								<tbody>
+									<tr>
+										<td>									
+											<table>
+												<thead>
+													<tr>
+														<th rowspan="5" class="vertical-center horizontal-cell vertical-text is-info">Name</th>
+														<th class="vertical-cell">Jessica</th>
+													</tr>
+													<tr>
+														<th class="vertical-cell">Laurie</th>
+													</tr>
+													<tr>
+														<th class="vertical-cell">Mark</th>
+													</tr>
+													<tr>
+														<th class="vertical-cell">Mary</th>
+													</tr>
+													<tr>
+														<th class="vertical-cell">Sally</th>
+													</tr>
+												</thead>
+											</table>
+										</td>
+										<td>
+											<table id="{% config::html::table_movie_film %}">
+												<tbody>
+													<%c++ for (unsigned j(0); j < 5; ++j){%>
+														<tr>
+															<%c++ for (unsigned k(0); k < 5; ++k){%>
+																<td class="is-size-5 horizontal-cell vertical-cell">
+																	<span class="icon is-small">
+																		<i></i>
+																	</span>
+																</td>
+															<%c++}%>
+														</tr>
+													<%c++}%>																				
+												</tbody>
+											</table>
+										</td>
+										<td>
+											<table id="{% config::html::table_movie_day %}">
+												<tbody>
+													<%c++ for (unsigned j(0); j < 5; ++j){%>
+														<tr>
+															<%c++ for (unsigned k(0); k < 5; ++k){%>
+																<td class="is-size-5 horizontal-cell vertical-cell">
+																	<span class="icon is-small">
+																		<i></i>
+																	</span>
+																</td>
+															<%c++}%>
+														</tr>
+													<%c++}%>																				
+												</tbody>
+											</table>
+										</td>
+										<td>
+											<table id="{% config::html::table_movie_time %}">
+												<tbody>
+													<%c++ for (unsigned j(0); j < 5; ++j){%>
+														<tr>
+															<%c++ for (unsigned k(0); k < 5; ++k){%>
+																<td class="is-size-5 horizontal-cell vertical-cell">
+																	<span class="icon is-small">
+																		<i></i>
+																	</span>
+																</td>
+															<%c++}%>
+														</tr>
+													<%c++}%>																				
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="column is-one-third">
+					<div class="columns is-multiline">
+
+						<div class="column is-full content">
+							<h1 class="is-size-5">Constraints</h1>
+							<ol>
+								<li>
+									Of the 20-hundreds releases, neither of which was Jessica's choice, one opened the week and one closed the week.
+								</li>
+								<li>
+									The latest of the 19-hundreds releases was shown at 30 minutes past the hour.
+								<li>
+									The releases shown before 8:00 pm were on consecutive days, as were the releases shown after 8:00 pm.
+								</li>
+								<li>
+									One of the men and one of the women had a showing before 8:00 pm, but neither was mid-week.
+								</li>
+								<li>
+									Mark, whose choice was Scarecrow, had a showing at a time of one hour and five minutes after that of Scarface.
+								</li>
+								<li>
+									Neither Miss Farmer nor Miss Peters had a showing on an even-numbered day
+								</li>
+								<li>
+									88 Minutes showed at a time both 40 minutes to the hour and 40 minutes after the Thursday showing.
+								</li>
+							</ol>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="column ">
-				<fieldset class="column box" style="height: 100%">
-					<legend class="label">Constraint</legend>
-					<div class="list is-hoverable">
+		</div>
 
-						<p class="is-size-5 list-item">
-							1. Of the 20-hundreds releases, neither of which was Jessica's choice, one opened the week and one closed the week.
-						</p>
-						<p class="is-size-5 list-item">
-							2. The latest of the 19-hundreds releases was shown at 30 minutes past the hour.						</p>
-						<p class="is-size-5 list-item">
-							3. The releases shown before 8:00 pm were on consecutive days, as were the releases shown after 8:00 pm.
-						</p>
-						<p class="is-size-5 list-item">
-							4. One of the men and one of the women had a showing before 8:00 pm, but neither was mid-week.
-						</p>
-						<p class="is-size-5 list-item">
-							5. Mark, whose choice was Scarecrow, had a showing at a time of one hour and five minutes after that of Scarface.
-						</p>
-						<p class="is-size-5 list-item">
-							6. Neither Miss Farmer nor Miss Peters had a showing on an even-numbered day
-						</p>
-						<p class="is-size-5 list-item">
-							7. 88 Minutes showed at a time both 40 minutes to the hour and 40 minutes after the Thursday showing.
-						</p>
+		<div class="box is-hidden is-size-5" id="{% config::html::div_computer %}">
+			<div class="columns">
+				<div class="column">
+					<div class="columns is-multiline">
+
+						<div class="column is-full content">
+							<h1 class="is-size-5">Wording</h1>
+							<p>
+								Andrew has just bought one of these five different models of computers. Each computer 
+								has a different screen size, processor power, hard drive capacity and price. With the 
+								help of the clues, could you figure out which computer has been chosen by Andrew?
+							</p>
+						</div>
+
+						<div class="column is-full">
+							<div class="columns">
+								<div class="column is-narrow">
+									<button class="button" id="{% config::html::clear_table_computer %}">Clear Table</button>
+								</div>
+								<div class="column is-narrow horizontal-center">
+									<button class="button is-hidden solve-button" id="{% config::html::solution_computer %}"></button>
+								</div>
+							</div>
+						</div>
 						
+						<div class="column is-full">
+							<table class="full-height table is-size-6 is-bordered">
+								<thead>
+									  <tr>
+										<th class="empty-cell">
+										
+										<th>
+											<table class="full-height">
+												<thead>
+													<tr>
+														<th colspan="5" class="is-info has-text-centered">Processor</th>
+													</tr>
+													<tr class="full-height">
+														<th class="horizontal-cell vertical-text">2.0 MHz</th>
+														<th class="horizontal-cell vertical-text">2.3 MHz</th>
+														<th class="horizontal-cell vertical-text">2.5 MHz</th>
+														<th class="horizontal-cell vertical-text">2.7 MHz</th>
+														<th class="horizontal-cell vertical-text">3.1 MHz</th>
+													</tr>
+												</thead>
+											</table>
+										</th>
+									
+										<th>
+											<table class="full-height">
+												<thead>
+													<tr>
+														<th colspan="5" class="is-info has-text-centered">Hard Disk</th>
+													</tr>
+													<tr class="full-height">
+														<th class="horizontal-cell vertical-text">250 Gb</th>
+														<th class="horizontal-cell vertical-text">320 Gb</th>
+														<th class="horizontal-cell vertical-text">500 Gb</th>
+														<th class="horizontal-cell vertical-text">750 Gb</th>
+														<th class="horizontal-cell vertical-text">1024 Gb</th>
+													</tr>
+												</thead>
+											</table>
+										</th>
+									
+										<th>
+											<table class="full-height">
+												<thead>
+													<tr>
+														<th colspan="5" class="is-info has-text-centered">Price</th>
+													</tr>
+													<tr class="full-height">
+														<th class="horizontal-cell vertical-text">$ 699</th>
+														<th class="horizontal-cell vertical-text">$ 999</th>
+														<th class="horizontal-cell vertical-text">$ 1,149</th>
+														<th class="horizontal-cell vertical-text">$ 1,349</th>
+														<th class="horizontal-cell vertical-text">$ 1,649</th>
+													</tr>
+												</thead>
+											</table>
+										</th>
+									</tr>
+								</thead>
+							
+								<tbody>
+									<tr>
+										<td>									
+											<table>
+												<thead>
+													<tr>
+														<th rowspan="5" class="vertical-center horizontal-cell vertical-text is-info">Monitor</th>
+														<th class="vertical-cell">13'</th>
+													</tr>
+													<tr>
+														<th class="vertical-cell">15'</th>
+													</tr>
+													<tr>
+														<th class="vertical-cell">15.6'</th>
+													</tr>
+													<tr>
+														<th class="vertical-cell">21.5'</th>
+													</tr>
+													<tr>
+														<th class="vertical-cell">27'</th>
+													</tr>
+												</thead>
+											</table>
+										</td>
+										<td>
+											<table id="{% config::html::table_computer_processor %}">
+												<tbody>
+													<%c++ for (unsigned j(0); j < 5; ++j){%>
+														<tr>
+															<%c++ for (unsigned k(0); k < 5; ++k){%>
+																<td class="is-size-5 horizontal-cell vertical-cell">
+																	<span class="icon is-small">
+																		<i></i>
+																	</span>
+																</td>
+															<%c++}%>
+														</tr>
+													<%c++}%>																				
+												</tbody>
+											</table>
+										</td>
+										<td>
+											<table id="{% config::html::table_computer_hard_disk %}">
+												<tbody>
+													<%c++ for (unsigned j(0); j < 5; ++j){%>
+														<tr>
+															<%c++ for (unsigned k(0); k < 5; ++k){%>
+																<td class="is-size-5 horizontal-cell vertical-cell">
+																	<span class="icon is-small">
+																		<i></i>
+																	</span>
+																</td>
+															<%c++}%>
+														</tr>
+													<%c++}%>																				
+												</tbody>
+											</table>
+										</td>
+										<td>
+											<table id="{% config::html::table_computer_price %}">
+												<tbody>
+													<%c++ for (unsigned j(0); j < 5; ++j){%>
+														<tr>
+															<%c++ for (unsigned k(0); k < 5; ++k){%>
+																<td class="is-size-5 horizontal-cell vertical-cell">
+																	<span class="icon is-small">
+																		<i></i>
+																	</span>
+																</td>
+															<%c++}%>
+														</tr>
+													<%c++}%>														
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
-				</fieldset>
-			</div>
-		</div>
-		<div class="block">
-			<button class="button" id="{%config::html::id_clear_table_movie%}">Clear Table</button>
-			<button class="button" id="{%config::html::id_check_table_movie%}">Check Solution</button>
-		</div>
-		
-		
-
-	</div>
-	
-
-	<div class="box  is-hidden" id="{%config::html::div_new_computer%}" >
-
-		<div class="columns is-mobile is-centered">
-			<div class="column is-half">
-				<div class="block ">
-					<h1 class="title">A New Personal Computer</h1><h2 class="subtitle">Logic Puzzle</h2>
 				</div>
-				<div class="block ">
-					<p class="is-size-4">
-						Andrew has just bought one of these five different models of computers. Each computer 
-						has a different screen size, processor power, hard drive capacity and price. With the 
-						help of the clues, could you figure out which computer has been chosen by Andrew?
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="box is-hidden" id="{%config::html::id_solution_div_computer%}" >
-			<div class="columns is-mobile is-centered">
-				<div class="column is-half">
-				
-					<div class="notification is-warning" id="{%config::html::id_solution_notification_computer%}">
+				<div class="column is-one-third">
+					<div class="columns is-multiline">
+
+						<div class="column is-full content">
+							<h1 class="is-size-5">Constraints</h1>
+							<ol>
+								<li>
+									Andrew bought the computer which was three hundred Euros 
+									less than the PC which has a processor that is 0.4 MHz more 
+									powerful than the one which has a 21.5' screen.
+								</li>
+								<li>
+									The five computers are: the one chosen by Andrew (which
+									doesn't have the 27' screen), the one which has the 2.0-MHz
+									processor, the computer that has a 250 GB HD, the one which
+									has a price of 1,149 Euros and the computer (which doesn't
+									have the 15' screen) that has the HD bigger than the one
+									chosen by Andrew but smaller than that the one which has
+									the 2.7 MHz processor.
+								<li>
+									The computer with the 320 Gb HD has either the 2.0 or the
+									2.3 MHz processor.The processor of the computer which has
+									the 15' screen is more powerful than the one in the computer
+									that costs 999 euros but less powerful than the processor that
+									is included in the 1,349 Euros computer.
+								</li>
+								<li>
+									The computer that has the 27' screen doesn't have the 320
+									Gb hard drive. The 500 GB HD is included in the computer
+									that has a more powerful processor and a larger size screen
+									than the one which costs 699 euros (which doesn't include
+									the 320 Gb HD).
+								</li>
+							</ol>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="columns is-mobile is-centered">
-			<div class="column is-four-fifths ">
-				<div class="block">
-					<table class="table is-bordered is-hoverable" id="{%config::html::id_table_computer%}" >
-						<thead>
+
+		<div class="box is-hidden is-size-5" id="{% config::html::div_pasta %}">
+			<div class="columns">
+				<div class="column">
+					<div class="columns is-multiline">
+
+						<div class="column is-full content">
+							<h1 class="is-size-5">Wording</h1>
+							<p>
+								Five friends are side by side planning a dinner together. Each one enjoys different 
+								kinds of pasta and wines from different countries. Figure out which pasta Holly likes the most.
+							</p>
+						</div>
+
+						<div class="column is-full">
+							<div class="columns">
+								<div class="column is-narrow">
+									<button class="button" id="{% config::html::clear_table_pasta %}">Clear Table</button>
+								</div>
+								<div class="column is-narrow horizontal-center">
+									<button class="button is-hidden solve-button" id="{% config::html::solution_pasta %}"></button>
+								</div>
+							</div>
+						</div>
 						
-						  	<tr >
-								<th colspan="2" ></th>
-								<th colspan="5" class="is-selected has-text-centered"> Processor </th>
-								<th colspan="5" class="is-selected has-text-centered"> Hard Disk </th>
-								<th colspan="5" class="is-selected has-text-centered"> Price </th>
-								<th class="is-selected has-text-centered">PC Selected</th> 
-							</tr>
-							<tr >
-								<th colspan="2"></th>
-								<th class="has-text-centered" style="width: 100px;">2.0 MHz</th>
-								<th class="has-text-centered" style="width: 100px;">2.3 MHz</th>
-								<th class="has-text-centered" style="width: 100px;">2.5 MHz</th>
-								<th class="has-text-centered" style="width: 100px;">2.7 MHz</th>
-								<th class="has-text-centered" style="width: 100px;">3.1 MHz</th>
-							
-								<th class="has-text-centered" style="width: 100px;">250 Gb</th>
-								<th class="has-text-centered" style="width: 100px;">320 Gb</th>
-								<th class="has-text-centered" style="width: 100px;">500 Gb</th>
-								<th class="has-text-centered" style="width: 100px;">750 Gb</th>
-								<th class="has-text-centered" style="width: 100px;">1024 Gb</th>
-							
-								<th class="has-text-centered" style="width: 100px;" >$ 699.00</th>
-								<th class="has-text-centered" style="width: 100px;" >$ 999.00</th>
-								<th class="has-text-centered" style="width: 100px;" >$ 1.149.00</th>
-								<th class="has-text-centered" style="width: 100px;" >$ 1.349.00</th>
-								<th class="has-text-centered" style="width: 100px;" >$ 1.649.00</th>
-							
-							</tr>
-						</thead>
-					
-						<tbody>
-							<tr >
-								<th rowspan="5" class="is-selected has-text-centered">Monitor</th>
-								<th style="height: 100px;" >13'</th>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+						<div class="column is-full">
+							<table class="table is-size-6 is-bordered" id="{% config::html::table_pasta %}">
+								<thead>
+									  <tr>
+										<th class="empty-cell">
+										<th class="is-info has-text-centered">Woman #1</th>
+										<th class="is-info has-text-centered">Woman #2</th>
+										<th class="is-info has-text-centered">Woman #3</th>
+										<th class="is-info has-text-centered">Woman #4</th>
+										<th class="is-info has-text-centered">Woman #5</th>									
+									</tr>
+								</thead>
+								
+								<%c++
+									const std::vector<std::string> shirt {"", "blue", "green", "red", "white", "yellow"};
+									const std::vector<std::string> name {"", "Andrea", "Holly", "Julie", "Leslie", "Victoria"};
+									const std::vector<std::string> surname {"", "Brown", "Davis", "Lopes", "Miller", "Wilson"};
+									const std::vector<std::string> pasta {"", "farfalle", "lasagne", "penne", "spaghetti", "ravioli"};
+									const std::vector<std::string> wine {"", "Australian", "Argentine", "Chilean", "French", "Italian"};
+									const std::vector<std::string> age {"", "30 years", "35 years", "40 years", "45 years", "50 years"};
+									auto pasta_selects = [&](const std::vector<std::string> & options)
+									{
+										for (unsigned select(0); select < 5; ++select)
+										{
+											%><td><div class="select"><select class="select-size"><%c++
+											for (const std::string & option: options)
+											{
+												%><option>{% option %}</option><%c++
+											}
+											%></select></div></td><%c++
+										}
+									};	
+								%>
 
-								<td></td>
-							</tr>
-							<tr >
-								<th style="height: 100px;">15'</th>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-
-								<td></td>
-							</tr>
-							<tr >
-								<th style="height: 100px;">15.6'</th>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-
-								<td></td>
-							</tr>
-							<tr >
-								<th style="height: 100px;">21.5'</th>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-
-								<td></td>
-							</tr>
-							<tr >
-								<th style="height: 100px;">27'</th>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-
-								<td></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<div class="column ">
-				<fieldset class="column box" style="height: 100%">
-					<legend class="label">Constraint</legend>
-					<div class="list is-hoverable">
-
-						<p class="is-size-5 list-item">
-							1. Andrew bought the computer which was three hundred Euros less than the PC which has a processor that is 0.4 MHz more powerful than the one which has a 21.5' screen.						</p>
-						<p class="is-size-5 list-item">
-							2. The five computers are: the one chosen by Andrew (which
-							doesn't have the 27' screen), the one which has the 2.0-MHz
-							processor, the computer that has a 250 GB HD, the one which
-							has a price of 1,149 Euros and the computer (which doesn't
-							have the 15' screen) that has the HD bigger than the one
-							chosen by Andrew but smaller than that the one which has
-							the 2.7 MHz processor.
-						<p class="is-size-5 list-item">
-							3. The computer with the 320 Gb HD has either the 2.0 or the
-							2.3 MHz processor.The processor of the computer which has
-							the 15' screen is more powerful than the one in the computer
-							that costs 999 euros but less powerful than the processor that
-							is included in the 1,349 Euros computer.
-						</p>
-						<p class="is-size-5 list-item">
-							4. The computer that has the 27' screen doesn't have the 320
-							Gb hard drive. The 500 GB HD is included in the computer
-							that has a more powerful processor and a larger size screen
-							than the one which costs 699 euros (which doesn't include
-							the 320 Gb HD).
-						</p>
+								<tbody>
+									<tr>
+										<th class="is-info has-text-centered">Shirt</th>
+										<%c++ pasta_selects(shirt); %>
+									</tr>
+									<tr>
+										<th class="is-info has-text-centered">Name</th>
+										<%c++ pasta_selects(name); %>
+									</tr>
+									<tr>
+										<th class="is-info has-text-centered">Surname</th>
+										<%c++ pasta_selects(surname); %>
+									</tr>
+									<tr>
+										<th class="is-info has-text-centered">Pasta</th>
+										<%c++ pasta_selects(pasta); %>
+									</tr>
+									<tr>
+										<th class="is-info has-text-centered">Wine</th>
+										<%c++ pasta_selects(wine); %>
+									</tr>
+									<tr>
+										<th class="is-info has-text-centered">Age</th>
+										<%c++ pasta_selects(age); %>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
-				</fieldset>
-			</div>
-		</div>
-		<div class="block">
-			<button class="button" id="{%config::html::id_clear_table_computer%}">Clear Table</button>
-			<button class="button" id="{%config::html::id_check_table_computer%}">Check Solution</button>
-		</div>
-		
-	</div>
+				</div>
+				<div class="column is-one-third">
+					<div class="columns is-multiline">
 
-	<div class="box is-hidden" id="{%config::html::div_pasta_wine%}"  >
-		
-		
-		
-		<div class="columns is-mobile is-centered">
-			<div class="column is-half">
-				<div class="block ">
-					<h1 class="title">Pasta and Wine</h1><h2 class="subtitle">Zebra Puzzle</h2>
-				</div>
-				<div class="block ">
-					<p class="is-size-4">
-						Five friends are side by side planning a dinner together. Each one enjoys different 
-						kinds of pasta and wines from different countries. Figure out which pasta Holly likes the most.
-					</p>
+						<div class="column is-full content">
+							<h1 class="is-size-5">Constraints</h1>
+							<ol>
+								<li>
+									The woman wearing the White shirt is next to the woman who likes Lombardian wines.
+								</li>
+								<li>
+									Ms Miller is somewhere between Ms Davis and Ms Brown, in that order.
+								</li>
+								<li>
+									The youngest woman is at the third position.
+								</li>
+								<li>
+									The 45-year-old woman is somewhere to the right of the woman wearing the Red shirt.
+								</li>
+								<li>
+									The woman who likes Chilean wines also likes Farfalle.
+								</li>
+								<li>
+									At the first position is the woman that likes Argentine wines.
+								</li>
+								<li>
+									Andrea is exactly to the right of the 35-year-old woman.
+								</li>
+								<li>
+									The woman wearing the Blue shirt is somewhere between Ms Davis and Holly, in that order.
+								</li>
+								<li>
+									Victoria is next to Leslie.
+								</li>
+								<li>
+									The woman wearing the Red shirt is somewhere to the left of the woman who likes Australian wines.
+								</li>
+								<li>
+									Ms Wilson is next to the 30-year-old woman.
+								</li>
+								<li>
+									Leslie is exactly to the left of the 30-year-old woman.
+								</li>
+								<li>
+									Holly is somewhere to the right of the woman wearing the Red shirt.
+								</li>
+								<li>
+									Ms Brown is exactly to the left of Julie.
+								</li>
+								<li>
+									The youngest woman likes Penne.
+								</li>
+								<li>
+									Ms Wilson is wearing the White shirt.
+								</li>
+								<li>
+									The woman who likes Lasagne is somewhere between the woman who likes Italian wines and the woman who likes Spaghetti, in that order.						
+								</li>
+								<li>
+									At the second position is the woman wearing the Blue shirt.						
+								</li>
+								<li>
+									The 40-year-old woman likes Lasagne.						
+								</li>
+								<li>
+									Ms Lopes is at the fifth position.
+								</li>
+								<li>
+									The woman that likes Australian wines is somewhere between Victoria and the woman who likes wines from Bordeaux, in that order.
+								</li>
+								<li>
+									The woman wearing the Yellow shirt is exactly to the left of the 35-year-old woman.						
+								</li>
+							</ol>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="box is-hidden" id="{%config::html::id_solution_div_pasta%}" >
-			<div class="columns is-mobile is-centered">
-				<div class="column is-half">
+		
+		<div class="box is-hidden" id="{% config::html::div_creation %}">
+			<!--
+			<div class="columns">
+				<div class="column is-multiline">
 				
-					<div class="notification is-warning" id="{%config::html::id_solution_notification_pasta%}">
-					</div>
-				</div>
+				</div>	
 			</div>
-		</div>
+			-->
 
-		<div class="columns is-mobile is-centered">
-			<div class="block column">
-					<table class="table is-bordered is-hoverable" id="{%config::html::id_table_pasta%}" >
-						<thead>
-						
-						  	<tr >
-								<th colspan="1" ></th>
-								<th  class="is-selected has-text-centered"> Woman#1 </th>
-								<th  class="is-selected has-text-centered"> Woman#2 </th>
-								<th  class="is-selected has-text-centered"> Woman#3 </th>
-								<th  class="is-selected has-text-centered"> Woman#4 </th>
-								<th  class="is-selected has-text-centered"> Woman#5 </th>
-							</tr>
-						</thead>
-					
-						<tbody>
-							<tr >
-								<th class="is-selected" >Shirt</th>
-								<td ><div class="select"> <select></select></div></td>
-								<td><div class="select"> <select></select></div></td>
-								<td><div class="select"> <select></select></div></td>
-								<td><div class="select"> <select></select></div></td>
-								<td><div class="select"> <select></select></div></td>
-							</tr>
-							<tr >
-								<th class="is-selected" >Name</th>
-								<td ><div class="select"> <select></select></div></td>
-								<td><div class="select"> <select></select></div></td>
-								<td><div class="select"> <select></select></div></td>
-								<td><div class="select"> <select></select></div></td>
-								<td><div class="select"> <select></select></div></td>
-							</tr>
-							<tr >
-								<th class="is-selected" >Surname</th>
-								<td ><div class="select"> <select></select></div></td>
-								<td><div class="select"> <select></select></div></td>
-								<td><div class="select"> <select></select></div></td>
-								<td><div class="select"> <select></select></div></td>
-								<td><div class="select"> <select></select></div></td>
-							</tr>
-							<tr >
-								<th class="is-selected" >Pasta</th>
-								<td ><div class="select"> <select></select></div></td>
-								<td ><div class="select"> <select></select></div></td>
-								<td ><div class="select"> <select></select></div></td>
-								<td ><div class="select"> <select></select></div></td>
-								<td ><div class="select"> <select></select></div></td>
-							</tr>
-							<tr >
-								<th class="is-selected" >Wine</th>
-								<td ><div class="select"> <select></select></div></td>
-								<td ><div class="select"> <select></select></div></td>
-								<td ><div class="select"> <select></select></div></td>
-								<td ><div class="select"> <select></select></div></td>
-								<td ><div class="select"> <select></select></div></td>
-							</tr>
-							<tr >
-								<th class="is-selected" >Age</th>
-								<td ><div class="select"> <select></select></div></td>
-								<td ><div class="select"> <select></select></div></td>
-								<td ><div class="select"> <select></select></div></td>
-								<td ><div class="select"> <select></select></div></td>
-								<td ><div class="select"> <select></select></div></td>
-							</tr>
-						</tbody>
-					</table>
-				
-					<div class="block">
-						<button class="button" id="{%config::html::id_clear_table_pasta%}">Clear Table</button>
-						<button class="button" id="{%config::html::id_check_table_pasta%}">Check Solution</button>
-					</div>
-				</div>
-
-				<fieldset class="column box" style="height: 100%">
-					<legend class="label">Constraint</legend>
-						<ol>
-
-						<li class="is-size-5 list-item">
-							The woman wearing the White shirt is next to the woman who likes Lombardian wines.
-						</li>
-						<li class="is-size-5 list-item">
-							Ms Miller is somewhere between Ms Davis and Ms Brown, in that order.
-						</li>
-						<li class="is-size-5 list-item">
-							The youngest woman is at the third position.
-						</li>
-						<li class="is-size-5 list-item">
-							The 45-year-old woman is somewhere to the right of the woman wearing the Red shirt.
-						</li>
-						<li class="is-size-5 list-item">
-							The woman who likes Chilean wines also likes Farfalle.
-						</li>
-						<li class="is-size-5 list-item">
-							At the first position is the woman that likes Argentine wines.
-						</li>
-						<li class="is-size-5 list-item">
-							Andrea is exactly to the right of the 35-year-old woman.
-						</li>
-						<li class="is-size-5 list-item">
-							The woman wearing the Blue shirt is somewhere between Ms Davis and Holly, in that order.
-						</li>
-						<li class="is-size-5 list-item">
-							Victoria is next to Leslie.
-						</li>
-						<li class="is-size-5 list-item">
-							The woman wearing the Red shirt is somewhere to the left of the woman who likes Australian wines.
-						</li>
-						<li class="is-size-5 list-item">
-							Ms Wilson is next to the 30-year-old woman.
-						</li>
-						<li class="is-size-5 list-item">
-							Leslie is exactly to the left of the 30-year-old woman.
-						</li>
-						<p class="is-size-5 list-item">
-							Holly is somewhere to the right of the woman wearing the Red shirt.
-						</p>
-						<li class="is-size-5 list-item">
-							Ms Brown is exactly to the left of Julie.
-						</li>
-						<li class="is-size-5 list-item">
-							The youngest woman likes Penne.
-						</li>
-						<li class="is-size-5 list-item">
-							Ms Wilson is wearing the White shirt.
-						</li>
-						<li class="is-size-5 list-item">
-							The woman who likes Lasagne is somewhere between the woman who likes Italian wines and the woman who likes Spaghetti, in that order.						
-						</li>
-						<li class="is-size-5 list-item">
-							At the second position is the woman wearing the Blue shirt.						
-						</li>
-						<li class="is-size-5 list-item">
-							The 40-year-old woman likes Lasagne.						
-						</li>
-						<li class="is-size-5 list-item">
-							Ms Lopes is at the fifth position.
-						</li>
-						<li class="is-size-5 list-item">
-							The woman that likes Australian wines is somewhere between Victoria and the woman who likes wines from Bordeaux, in that order.
-						</li>
-						<li class="is-size-5 list-item">
-							The woman wearing the Yellow shirt is exactly to the left of the 35-year-old woman.						
-						</li>
-					</ol>
-					
-				</fieldset>
-			</div>
-
-	</div>
-	<div class="box is-hidden " id="{%config::html::div_creation_puzzle%}" >
-		<div class="block columns is-mobile is-centered">
-			<div class="column">
-				<div class="block">
-					<label for="{%config::html::id_creation_name_1%}">
-						Enter the name of the personne 1
-					</label>
-					<input type="text" class="input" id="{%config::html::id_creation_name_1%}"/>
-				</div>
-				<div class="block">
-					<label for="{%config::html::id_creation_name_2%}">
-						Enter the name of the personne 2
-					</label>
-					<input type="text" class="input" id="{%config::html::id_creation_name_2%}"/>
-				</div>
-				<div class="block">
-					<label for="{%config::html::id_creation_name_3%}">
-						Enter the name of the personne 3
-					</label>
-					<input type="text" class="input" id="{%config::html::id_creation_name_3%}"/>
-				</div>
-			</div>
-			<div class="column">
-				<div class="block">
-					<label for="{%config::html::id_creation_object_1%}">
-						Enter the name of the objet 1
-					</label>
-					<input type="text" class="input" id="{%config::html::id_creation_object_1%}"/>
-				</div>
-				<div class="block">
-					<label for="{%config::html::id_creation_object_2%}">
-						Enter the name of the objet 2
-					</label>
-					<input type="text" class="input" id="{%config::html::id_creation_object_2%}"/>
-				</div>
-				<div class="block">
-					<label for="{%config::html::id_creation_object_3%}">
-						Enter the name of the objet 3
-					</label>
-					<input type="text" class="input" id="{%config::html::id_creation_object_3%}"/>
-				</div>
-			</div>
-			<div class="column">
-				<div class="block">
-					<label for="{%config::html::id_creation_location_1%}">
-						Enter the name of the location 1
-					</label>
-					<input type="text" class="input" id="{%config::html::id_creation_location_1%}"/>
-				</div>
-				<div class="block">
-					<label for="{%config::html::id_creation_location_2%}">
-						Enter the name of the location 2
-					</label>
-					<input type="text" class="input" id="{%config::html::id_creation_location_2%}"/>
-				</div>
-				<div class="block">
-					<label for="{%config::html::id_creation_location_3%}">
-						Enter the name of the location 3
-					</label>
-					<input type="text" class="input" id="{%config::html::id_creation_location_3%}"/>
-				</div>
-			</div>
+			<table class="table">
+				<thead>
+					<th></th>
+				</thead>
+			</table>
 		</div>
-		<div class="block columns is-mobile is-centered is-multiline">
-			<div class="block column" ></div>
-		</div>
-		<div class="block">
-			<button class="button" id="{%config::html::id_check_csp%}">Check your CSP </button>
-		</div>
-	</div>
 	</body>
 </html>

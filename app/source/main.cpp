@@ -22,13 +22,14 @@ int main()
 	drogon::app()
 		.addListener(config::main::ip, port)
 		.setDocumentRoot(config::main::document_root)
-        .setUploadPath(config::main::upload_path)
 		.enableSession(config::main::session_timeout)
 		.setThreadNum(config::main::threads)
+		.setFileTypes({"js", "css", "html", "ico", "mzn", "woff2", "mjs", "wasm", "data"})
+		.registerCustomExtensionMime("mjs", "application/javascript")
 	;
 
 	// Run the app
-	LOG_INFO << "Server running on " << config::main::ip << ":" << port;
+	LOG_INFO << "Server running on http://" << config::main::ip << ":" << port;
 	drogon::app().run();
 
 	return EXIT_SUCCESS;
