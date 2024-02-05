@@ -12,7 +12,6 @@ This repository is hosted on [Github](https://github.com/chrppi-developpers/csp_
 	- C++ package manager (Conan)
 		- C++ web framework (Drogon)
 			- CSS framework (Bulma)
-			- C++ interpreter (cling)
 			- CSP compiler/solver (MiniZinc/Gecode) in [JavaScript](https://js.minizinc.dev/docs/stable/index.html)
 
 ## Requirements
