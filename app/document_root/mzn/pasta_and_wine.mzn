@@ -56,7 +56,7 @@ predicate left_of(woman_indexes: person_index_1, woman_indexes: person_index_2) 
 % Figure out which pasta Holly likes the most.
 constraint exists(person_index_1 in woman_indexes)
 (
-  name_woman[person_index_1] = Holly
+	name_woman[person_index_1] = Holly
 	/\ pasta_woman[person_index_1] = holly_pasta
 );
 

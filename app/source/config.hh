@@ -54,14 +54,29 @@ namespace config
 		// Creation puzzle
 		const std::string puzzle_creation("puzzle_creation");
 		const std::string div_creation("div_creation");
-		const std::string creation_name_1("creation_name_1");
-		const std::string creation_name_2("creation_name_2");
-		const std::string creation_name_3("creation_name_3");
-		const std::string creation_object_1("creation_object_1");
-		const std::string creation_object_2("creation_object_2");
-		const std::string creation_object_3("creation_object_3");
-		const std::string creation_location_1("creation_location_1");
-		const std::string creation_location_2("creation_location_2");
-		const std::string creation_location_3("creation_location_3");
+		const std::string div_values_creation("div_values_creation");
+		const std::string div_constraints_creation("div_constraints_creation");
+		const std::string name_1_creation("name_1_creation");
+		const std::string name_2_creation("name_2_creation");
+		const std::string name_3_creation("name_3_creation");
+		const std::string place_1_creation("place_1_creation");
+		const std::string place_2_creation("place_2_creation");
+		const std::string place_3_creation("place_3_creation");
+		const std::string object_1_creation("object_1_creation");
+		const std::string object_2_creation("object_2_creation");
+		const std::string object_3_creation("object_3_creation");
+		const std::string values_error_creation("values_error_creation");
+		const std::string values_error_message_creation("values_error_message_creation");
+		const std::string add_constraint_creation("add_constraint_creation");
+		const std::string constraint_content_creation("constraint_content_creation");
+		const std::string type_block_creation("type_block_creation");
+		const std::string type_select_creation("type_select_creation");
+		const std::string type_content_creation("type_content_creation");
+		const std::string constraint_error_creation("constraint_error_creation");
+		const std::string constraint_error_message_creation("constraint_error_message_creation");
+		const std::string txt_constraints_creation("txt_constraints_creation");
+		const std::string solutions_number_creation("solutions_number_creation");
+		const std::string constraints_solutions_creation("constraints_solutions_creation");
+		const std::string pagination_creation("pagination_creation");
 	}
 };

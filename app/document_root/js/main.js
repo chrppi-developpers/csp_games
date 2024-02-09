@@ -18,35 +18,29 @@ async function solve(model_file, constraints, solution_id)
 	// Load model and add constraints
 	const response = await fetch('mzn/' + model_file);
 	let csp = await response.text();
-	csp += constraints
+	csp += constraints;
 	model.addFile('test.mzn', csp);
 
 	// Solve model	
 	const solve = model.solve({options: {solver: 'gecode', 'all-solutions': false}});
 
-	solution.classList.remove('is-danger');
-	solution.classList.remove('is-success');
-	solution.classList.remove('is-hidden');
-	solution.classList.add('is-warning');
-	solution.classList.add('is-loading');
+	// Show loading until found solution
+	solution.classList.remove('is-danger', 'is-success', 'is-hidden');
+	solution.classList.add('is-warning', 'is-loading');
 
 	// Print solutions
 	solve.then
 	(
 		result => 
 		{
+			solution.classList.remove('is-warning', 'is-loading');
 			if (result.status == 'ALL_SOLUTIONS' || result.status == 'OPTIMAL_SOLUTION' || result.status == 'SATISFIED')
 			{
-				solution.classList.remove('is-warning');
-				solution.classList.remove('is-loading');
 				solution.classList.add('is-success');
 				solution.textContent = 'Your proposition has solutions';
 			}
-
 			else
 			{
-				solution.classList.remove('is-warning');
-				solution.classList.remove('is-loading');
 				solution.classList.add('is-danger');
 				solution.textContent = 'Your proposition has no solution';
 			}
@@ -546,9 +540,7 @@ document.getElementById(config.clear_table_movie).addEventListener
 
 		// Update HTML solution
 		const solution = document.getElementById(config.solution_movie);
-		solution.classList.remove('is-danger');
-		solution.classList.remove('is-success');
-		solution.classList.remove('is-warning');		
+		solution.classList.remove('is-danger', 'is-success', 'is-warning');
 		solution.classList.add('is-hidden');
 		solution.textContent = '';
 	}
@@ -570,9 +562,7 @@ document.getElementById(config.clear_table_computer).addEventListener
 
 		// Update HTML solution
 		const solution = document.getElementById(config.solution_computer);
-		solution.classList.remove('is-danger');
-		solution.classList.remove('is-success');
-		solution.classList.remove('is-warning');
+		solution.classList.remove('is-danger', 'is-success', 'is-warning');
 		solution.classList.add('is-hidden');
 		solution.textContent = '';
 	}
@@ -590,9 +580,7 @@ document.getElementById(config.clear_table_pasta).addEventListener
 
 		// Update HTML solution
 		const solution = document.getElementById(config.solution_pasta);
-		solution.classList.remove('is-danger');
-		solution.classList.remove('is-success');
-		solution.classList.remove('is-warning');
+		solution.classList.remove('is-danger', 'is-success', 'is-warning');
 		solution.classList.add('is-hidden');
 		solution.textContent = '';
 	}
@@ -630,4 +618,7 @@ document.getElementById(config.table_computer_price).addEventListener
 	event => { update_table(event, config.puzzle_computer, config.table_computer_price); }
 );
 for (let select of document.getElementById(config.table_pasta).getElementsByTagName('select')) 
-	select.addEventListener('change', event => { update_table(event, config.puzzle_pasta, config.table_pasta); });
+	select.onchange = event => update_table(event, config.puzzle_pasta, config.table_pasta);
+
+// Update DOM to create puzzle
+import * as create from './create.js';

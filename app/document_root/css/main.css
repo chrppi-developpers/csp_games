@@ -48,7 +48,6 @@
 
 .horizontal-center
 {
-	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -56,4 +55,35 @@
 .select-size
 {
 	width: 150px;
+}
+
+.in-line
+{
+	display: flex;
+}
+
+.constraint
+{
+	font-family: 'Courier New';
+	font-weight: bold;
+}
+
+.scrollable-table
+{
+	width: fit-content;
+	overflow: auto;
+	max-height: 48em;
+}
+
+.scrollable-table table 
+{
+	border-collapse: separate;
+}
+
+.scrollable-table table thead
+{
+	position: sticky;
+	top: 0;
+	background-color: white;
+	z-index: 1;
 }
