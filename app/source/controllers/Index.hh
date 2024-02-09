@@ -6,9 +6,8 @@
 #include <drogon/HttpResponse.h>
 
 #include "../config.hh"
-
-// Only controller for chrppi that serve a single view
-// First the client gets the HTML and then it gets a JSON responses that update the page with AJAX
+.
+// Only controller that serve a single view
 class Index:
 	public drogon::HttpSimpleController<Index>
 {
