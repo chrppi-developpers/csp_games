@@ -1186,7 +1186,6 @@ add_constraint_creation.onclick =
 					}
 					txt_operations.push(`${operation.member.index} ∈ {${txt_indexes.join(', ')}}`);
 					mzn_operations.push(`member([${mzn_indexes.join(', ')}], ${operation.member.index})`);
-					console.log(`member([${txt_indexes.join(', ')}], ${operation.member.index})`);
 				}
 			}
 			txt_constraint += `[${txt_operations.join(', ')}]`;
