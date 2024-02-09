@@ -41,8 +41,8 @@ sed --in-place --regexp-extended "s/(BUILD_TYPE=).*/\1Release/" app/.env
 
 ```bash
 cd ..
-tar --verbose --create --gzip --file chrppi.tgz chrppi
-scp -P 2019 chrppi.tgz viallard@leria-etud.univ-angers.fr:~
+tar --verbose --create --gzip --file cpp_games.tgz cpp_games
+scp -P 2019 cpp_games.tgz viallard@leria-etud.univ-angers.fr:~
 ```
 
 ### Create and connect to new KVM container
@@ -51,16 +51,16 @@ scp -P 2019 chrppi.tgz viallard@leria-etud.univ-angers.fr:~
 ssh -p 2019 viallard@leria-etud.univ-angers.fr
 kvm.delete
 kvm.create
-scp chrppi.tgz root@etud-kvm-viallard:~
+scp cpp_games.tgz root@etud-kvm-viallard:~
 kvm.connect
 ```
 
 ### Extract the app
 
 ```bash
-tar --verbose --extract --gzip --file chrppi.tgz
-rm chrppi.tgz
-mv chrppi /media/user
+tar --verbose --extract --gzip --file cpp_games.tgz
+rm cpp_games.tgz
+mv cpp_games /media/user
 ```
 
 ### Install required Debian packages
