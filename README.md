@@ -2,7 +2,7 @@
 
 This project is a website that implement CSP games.
 
-The website can be acessed localy on [http://localhost:8000](http://localhost).
+The website can be acessed localy on [http://localhost](http://localhost).
 
 This repository is hosted on [Github](https://github.com/chrppi-developpers/csp_games).
 
@@ -19,68 +19,6 @@ This repository is hosted on [Github](https://github.com/chrppi-developpers/csp_
 Any machine running macOS or GNU/Linux should be supported, but we recommend using a `Debian` based operating system as we did.
 
 The absolute path of the root folder should not contain spaces in order to allow compilation (excecution of `app/build.sh` and `app/run.sh`).
-
-## LERIA deployment
-
-Deploy the app on the LERIA server.
-
-More informations on the [LERIA wiki](https://wiki.leria.univ-angers.fr/ua_members/cloud).
-
-### Build and prepare the app
-
-```bash
-./env/build.sh
-./env/inspect.sh
-./build.sh
-exit
-sed --in-place --regexp-extended "s/(INTERNAL_PORT=).*/\180/" app/.env
-sed --in-place --regexp-extended "s/(BUILD_TYPE=).*/\1Release/" app/.env
-```
-
-### Upload the app to LERIA
-
-```bash
-cd ..
-tar --verbose --create --gzip --file cpp_games.tgz cpp_games
-scp -P 2019 cpp_games.tgz viallard@leria-etud.univ-angers.fr:~
-```
-
-### Create and connect to new KVM container
-
-```bash
-ssh -p 2019 viallard@leria-etud.univ-angers.fr
-kvm.delete
-kvm.create
-scp cpp_games.tgz root@etud-kvm-viallard:~
-kvm.connect
-```
-
-### Extract the app
-
-```bash
-tar --verbose --extract --gzip --file cpp_games.tgz
-rm cpp_games.tgz
-mv cpp_games /media/user
-```
-
-### Install required Debian packages
-
-```bash
-sed --in-place 's/bullseye/bookworm/' /etc/apt/sources.list
-apt update
-export DEBIAN_FRONTEND=noninteractive && apt upgrade --yes
-apt install g++ --yes
-```
-
-### Execute the app as root
-
-```bash
-./execute.sh
-```
-
-### Access to the app
-
-Got to https://etud-kvm-viallard.leria-etud.univ-angers.fr
 
 ## Rootfull Podman deployment
 
@@ -117,6 +55,16 @@ cd ../env
 
 ```bash
 sudo ./run.sh
+```
+
+### Access the app
+
+Got to [http://localhost](http://localhost).
+
+### Terminate app execution
+
+```bash
+./kill.sh
 ```
 
 ## Rootless Podman deployment
@@ -167,4 +115,14 @@ Then build and run the app with the current user on the select port.
 cd env
 ./build.sh
 ./run.sh
+```
+
+### Access to the app
+
+Got to [http://localhost](http://localhost).
+
+### Terminate app execution
+
+```bash
+./kill.sh
 ```

@@ -15,7 +15,7 @@ source app/.env
 PAST_CONTAINERS=$(podman container list --quiet --filter ancestor=$APP_NAME)
 if [ -n "$PAST_CONTAINERS" ]
 then
-   podman container kill $PAST_CONTAINERS
+	podman container kill $PAST_CONTAINERS
 fi
 
 # Create and run a container

@@ -29,17 +29,6 @@ const solutions_number_creation = document.getElementById(config.solutions_numbe
 const constraints_solutions_creation = document.getElementById(config.constraints_solutions_creation);
 const pagination_creation = document.getElementById(config.pagination_creation);
 
-// TODO: Remove after testing
-name_1_creation.value = 'n1';
-name_2_creation.value = 'n2';
-name_3_creation.value = 'n3';
-place_1_creation.value = 'p1';
-place_2_creation.value = 'p2';
-place_3_creation.value = 'p3';
-object_1_creation.value = 'o1';
-object_2_creation.value = 'o2';
-object_3_creation.value = 'o3';
-
 // Set ids for dynamic DOM elements
 const ids =
 {
@@ -626,10 +615,14 @@ type_select_creation.onchange =
 													let numer_2_option = document.createElement('option');
 													numer_2_option.innerText = '2';
 													numer_2_option.value = '2';
+													let numer_3_option = document.createElement('option');
+													numer_3_option.innerText = '3';
+													numer_3_option.value = '3';
 													let select_number = document.createElement('select');
 													select_number.appendChild(header_option);
 													select_number.appendChild(numer_1_option);
 													select_number.appendChild(numer_2_option);
+													select_number.appendChild(numer_3_option);
 													let div_select_number = document.createElement('div');
 													div_select_number.classList.add('select', classes.domain_number_creation);
 													div_select_number.appendChild(select_number);
@@ -1184,7 +1177,7 @@ add_constraint_creation.onclick =
 						txt_indexes.push(`#${index}`);
 						mzn_indexes.push(`${index}`);
 					}
-					txt_operations.push(`${operation.member.index} ∈ {${txt_indexes.join(', ')}}`);
+					txt_operations.push(`#${operation.member.index} ∈ {${txt_indexes.join(', ')}}`);
 					mzn_operations.push(`member([${mzn_indexes.join(', ')}], ${operation.member.index})`);
 				}
 			}
