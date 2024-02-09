@@ -6,7 +6,7 @@
 #include <drogon/HttpResponse.h>
 
 #include "../config.hh"
-.
+
 // Only controller that serve a single view
 class Index:
 	public drogon::HttpSimpleController<Index>
